@@ -5,7 +5,7 @@ import MapView, { Callout, Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { useNavigation } from "@react-navigation/native";
 import { DUMMY_DATA } from "../../../utils/Data";
-import { FAB, Searchbar } from "react-native-paper";
+import { FAB, Searchbar, Text } from "react-native-paper";
 import { colors } from "../../../globals/Colors";
 
 const isAndroid = Platform.OS === "android";
@@ -18,6 +18,10 @@ const Dashboard = () => {
 
   const [longitude, setLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
+
+  const handleRankInfo = (place: object): void => {
+    navigation.navigate("rank-info", { place: place });
+  };
 
   useEffect(() => {
     (async () => {
@@ -58,9 +62,11 @@ const Dashboard = () => {
                   longitude: place.coords.longitude,
                 }}
               >
-                {/* <Callout onPress={onOpenSnack}>
-                  <GlobalCaption caption={place.place} />
-                </Callout> */}
+                <Callout onPress={handleRankInfo.bind(this, place)}>
+                  <View>
+                    <Text>{place.place}</Text>
+                  </View>
+                </Callout>
               </Marker>
             </View>
           );
@@ -161,7 +167,7 @@ const styles = StyleSheet.create({
   main: {
     position: "relative",
   },
-  fab:{
-    backgroundColor:colors.primary_10
-  }
+  fab: {
+    backgroundColor: colors.primary_10,
+  },
 });

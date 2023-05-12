@@ -8,18 +8,19 @@ import { useNavigation } from "@react-navigation/native";
 
 const Marshal = () => {
   const navigation = useNavigation();
+  
   const onPress = (): void => {
-    // navigation.navigate("");
-    console.log("pressed!");
+    navigation.navigate("chat");
   };
+
   return (
     <Scroller>
       <MainWrapperView>
         <HeaderBack title="Cab Marshals" />
         <MarshalCard
           icon="user"
-          subtitle="City Center"
-          title="Polokwane"
+          subtitle="City Center rank"
+          title="Limpopo, Polokwane City"
           onPress={onPress}
         />
       </MainWrapperView>

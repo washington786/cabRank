@@ -24,8 +24,8 @@ type card = {
 const MarshalCard = (props: card) => {
   return (
     <TouchableOpacity style={styles.con} onPress={props.onPress}>
-      <View style={styles.icon}>
-        <Icon name={props.icon} size={25} color={rgba.grey_3} />
+      <View style={[styles.icon, styles.icons]}>
+        <Icon name={props.icon} size={25} color={"#fff"} />
       </View>
       <View style={styles.content}>
         <Text numberOfLines={1}>{props.title}</Text>
@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingHorizontal: 5,
+  },
+  icons: {
+    paddingVertical:5,
+    backgroundColor:colors.primary_7,
+    borderRadius:10
   },
   conWrap: {
     alignItems: "center",
