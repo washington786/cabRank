@@ -40,25 +40,6 @@ const faq_data = [
     description: "When a student has a medical emergency",
     id: 3,
   },
-  {
-    title: "What do you say when Maponya 911 answers the call?",
-    description:
-      "I have an emergency and I am a student from Tshwane University of Technology.",
-    id: 4,
-  },
-  {
-    title: "What number are you calling from?",
-    description:
-      "Give the telephone number you are calling from in case the call taker needs to call you back or if the phone gets disconnected while you are talking",
-    id: 5,
-  },
-  {
-    title:
-      "Will the TUT student be transported to a private hospital or a provincial hospital?",
-    description:
-      "Maponya 911 is not a medical aid so if a student is not on a medical aid, they will be taken to the closest provincial hospital. If the student does have a medical aid, they will be taken to the closest most appropriate private hospital. Any costs from when you arrive at the hospital will be for the students own account.",
-    id: 6,
-  },
 ];
 const HelpCenter = () => {
   let title: string = "Help Center";
@@ -73,12 +54,12 @@ const HelpCenter = () => {
           <Card mode="contained" style={styles.card}>
             <Text variant="bodyMedium">Help Center Info</Text>
             <Card.Content>
-              <CardContent icon="mail" title="medico@yahoo.co.za" />
+              <CardContent icon="mail" title="taxiassociation@gmail.com" />
               <CardContent icon="phone" title={callNo} />
               <CardContents icon="whatsapp" title={whatsappNo} />
             </Card.Content>
           </Card>
-          <Accordion />
+          {/* <Accordion /> */}
         </Scroller>
       </MainWrapperView>
     </ScrollWrapper>
@@ -118,61 +99,6 @@ const Info = () => {
   );
 };
 
-interface ac {
-  id: number;
-  title: string;
-  desc: string;
-  expand: boolean;
-  onExpand?(index: number): void;
-}
-
-const Accordion = () => {
-  const [expanded, setExpanded] = useState<Boolean | any>(false);
-  const onExpand = (id: number): void => {
-    if (!id) {
-      setExpanded(false);
-    }
-    if (id) {
-      setExpanded(!expanded);
-    }
-  };
-  return (
-    <List.Section
-      title="Frequently asked questions"
-      titleStyle={styles.accTitle}
-    >
-      {!isIos ? <Divider orientation="horizontal" width={0.5} /> : <Div />}
-      {faq_data.map((item) => {
-        return (
-          <AccordionItem
-            desc={item.description}
-            title={item.title}
-            expand={expanded}
-            key={item.id}
-            onExpand={onExpand.bind(this, item.id)}
-            id={item.id}
-          />
-        );
-      })}
-    </List.Section>
-  );
-};
-
-const AccordionItem = (props: ac) => {
-  return (
-    <List.Accordion
-      title={props.title}
-      expanded={props.id ? !props.expand : props.expand}
-      onPress={props.onExpand?.bind(this, props.id)}
-      titleNumberOfLines={2}
-      id={props.id}
-    >
-      <Text variant="bodySmall" style={styles.listTxt}>
-        {props.desc}
-      </Text>
-    </List.Accordion>
-  );
-};
 export default HelpCenter;
 
 const styles = StyleSheet.create({
