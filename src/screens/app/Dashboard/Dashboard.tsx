@@ -20,7 +20,11 @@ const Dashboard = () => {
   const [latitude, setLatitude] = useState(0);
 
   const handleRankInfo = (place: object): void => {
-    navigation.navigate("rank-info", { place: place });
+    navigation.navigate("rank-info", {
+      place: place,
+      lat: latitude,
+      long: longitude,
+    });
   };
 
   useEffect(() => {
@@ -56,7 +60,7 @@ const Dashboard = () => {
             <View key={place.id}>
               <Marker
                 key={place.id}
-                title={place.place}
+                title={place.rankName}
                 coordinate={{
                   latitude: place.coords.latitude,
                   longitude: place.coords.longitude,
@@ -64,7 +68,7 @@ const Dashboard = () => {
               >
                 <Callout onPress={handleRankInfo.bind(this, place)}>
                   <View>
-                    <Text>{place.place}</Text>
+                    <Text>{place.rankName}</Text>
                   </View>
                 </Callout>
               </Marker>
