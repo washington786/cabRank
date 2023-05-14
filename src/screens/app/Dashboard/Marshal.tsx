@@ -9,7 +9,6 @@ import { DUMMY_DATA } from "../../../utils/Data";
 
 const Marshal = () => {
   
-
   return (
     <Scroller>
       <MainWrapperView>
