@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import Scroller from "../../../globals/Scroller";
 import MainWrapperView from "../../../components/app/MainWrapperView";
@@ -8,7 +8,6 @@ import { useNavigation } from "@react-navigation/native";
 import { DUMMY_DATA } from "../../../utils/Data";
 
 const Marshal = () => {
-  
   return (
     <Scroller>
       <MainWrapperView>
