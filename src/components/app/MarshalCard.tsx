@@ -19,11 +19,12 @@ type card = {
   subtitle: string;
   icon: string;
   onPress?(): void;
+  index?:number;
 };
 
 const MarshalCard = (props: card) => {
   return (
-    <TouchableOpacity style={styles.con} onPress={props.onPress}>
+    <TouchableOpacity style={styles.con} onPress={props.onPress} key={props.index}>
       <View style={[styles.icon, styles.icons]}>
         <Icon name={props.icon} size={25} color={"#fff"} />
       </View>

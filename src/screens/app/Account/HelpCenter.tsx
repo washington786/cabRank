@@ -1,17 +1,14 @@
-import { Platform, StyleSheet, View } from "react-native";
-import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import React from "react";
 
 import {
   Card,
-  List,
   Paragraph,
   Text,
-  Divider as Div,
 } from "react-native-paper";
 
 import Icons from "react-native-vector-icons/Feather";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Divider } from "react-native-elements";
 import ScrollWrapper from "../../../globals/ScrollWrapper";
 import Scroller from "../../../globals/Scroller";
 import HeaderBack from "../../../components/app/HeaderBack";
@@ -19,28 +16,7 @@ import MainWrapperView from "../../../components/app/MainWrapperView";
 import { roboto } from "../../../globals/Fonts";
 import { colors, rgba } from "../../../globals/Colors";
 
-const isIos = Platform.OS === "ios";
 
-const faq_data = [
-  {
-    title: "Who is covered by Ems?",
-    description:
-      "Any registered TUT student. The student is covered for the entire academic year including holidays.",
-    id: 1,
-  },
-  {
-    title:
-      "Can this number be called from any cell phone or any telephone in South Africa?",
-    description:
-      "Yes, any phone or service provider including Cell C, MTN, 8ta and Vodacom can be used and calls are charged at standard cell phone rates.",
-    id: 2,
-  },
-  {
-    title: "When can I call Maponya 911 for assistance?",
-    description: "When a student has a medical emergency",
-    id: 3,
-  },
-];
 const HelpCenter = () => {
   let title: string = "Help Center";
   let whatsappNo: string = "+2782 969 0666";
@@ -59,7 +35,6 @@ const HelpCenter = () => {
               <CardContents icon="whatsapp" title={whatsappNo} />
             </Card.Content>
           </Card>
-          {/* <Accordion /> */}
         </Scroller>
       </MainWrapperView>
     </ScrollWrapper>
