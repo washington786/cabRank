@@ -19,6 +19,7 @@ const Dashboard = () => {
   const [longitude, setLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
 
+  
   const handleRankInfo = (place: object): void => {
     navigation.navigate("rank-info", {
       place: place,
@@ -42,10 +43,41 @@ const Dashboard = () => {
       setLongitude(longitude);
     })();
   }, []);
+ 
+  const [filteredDataSource, setFilteredDataSource] = useState(DUMMY_DATA);
+  const [masterDataSource, setMasterDataSource] = useState(DUMMY_DATA);
+  const searchFilterFunction = (text) => {
+    if (text) {
+        const newData = masterDataSource.filter(function (item) {
+            const itemData = item.rankName? item.rankName.toUpperCase()
+                : ''.toUpperCase();
+            const textData = text.toUpperCase();
+            return itemData.indexOf(textData) > -1;
 
+        })
+        setFilteredDataSource(newData);
+        
+    } else {
+        setFilteredDataSource(masterDataSource);
+        
+    }
+}
+  
   return (
     <View style={styles.main}>
-      <TopComponent />
+      {/* <TopComponent /> */}
+      <View style={styles.top}>
+      <Searchbar
+        placeholder="Search.."
+        inputMode="search"
+        // value={search}
+        // onChangeText={onHandleSearch}
+        onChangeText={(text) => searchFilterFunction(text)}
+        style={styles.input}
+        keyboardType="default"
+        keyboardAppearance="light"
+      />
+    </View>
       <MapView
         style={styles.map}
         region={{
@@ -55,7 +87,7 @@ const Dashboard = () => {
           longitudeDelta: 0.029,
         }}
       >
-        {DUMMY_DATA.map((place) => {
+        {filteredDataSource.map((place) => {
           return (
             <View key={place.id}>
               <Marker
@@ -87,6 +119,24 @@ const TopComponent = () => {
   const onHandleSearch = (e: any): void => {
     setSearch(e);
   };
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+  const [masterDataSource, setMasterDataSource] = useState([]);
+  const searchFilterFunction = (text) => {
+    if (text) {
+        const newData = masterDataSource.filter(function (item) {
+            const itemData = item.rankName? item.rankName.toUpperCase()
+                : ''.toUpperCase();
+            const textData = text.toUpperCase();
+            return itemData.indexOf(textData) > -1;
+
+        })
+        setFilteredDataSource(newData);
+        
+    } else {
+        setFilteredDataSource(masterDataSource);
+        
+    }
+}
 
   return (
     <View style={styles.top}>
@@ -94,7 +144,8 @@ const TopComponent = () => {
         placeholder="Search.."
         inputMode="search"
         value={search}
-        onChangeText={onHandleSearch}
+        // onChangeText={onHandleSearch}
+        onChangeText={(text) => searchFilterFunction(text)}
         style={styles.input}
         keyboardType="default"
         keyboardAppearance="light"

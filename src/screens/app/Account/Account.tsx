@@ -1,17 +1,45 @@
 import { StyleSheet, View } from "react-native";
-import React from "react";
+import React ,{useState,useEffect}from "react";
 import { useNavigation } from "@react-navigation/native";
 import ScrollWrapper from "../../../globals/ScrollWrapper";
 import { Button, Paragraph } from "react-native-paper";
 import { colors } from "../../../globals/Colors";
 import { roboto } from "../../../globals/Fonts";
 import Wrapper, { TitleWrapper } from "../../../components/app/Wrapper";
+import {db, auth } from "../../auth/firebase";
+import { signOut } from "firebase/auth";
+import { ref,onValue } from "firebase/database";
 
 const Account = () => {
-  const navigation = useNavigation();
+  const user = auth.currentUser?.uid;
   
+  const [Firstname,setFirstname]=useState('')
+  const [Uid,setUid]=useState('')
+  const [Lastname,setLastname]=useState('')
+  const [Email,setEmail]=useState('')
+  const navigation = useNavigation();
+  useEffect(() => {
+    const CabRankRef= ref(db,'/CabRankClient/' + user)
+    onValue(CabRankRef, snap => {
+ 
+         setFirstname(snap.val() && snap.val().Firstname);
+         setLastname(snap.val().Lastname)
+         setEmail(snap.val().email)
+         setUid(snap.val().uid)
+     }) 
+ 
+ }, [])
+  const onLogoutUser=()=>{
+   
+    signOut(auth);
+    navigation.navigate('auth');
+    
+  }
   const transitAccount = (): void => {
-    navigation.navigate("profile");
+    navigation.navigate("profile",{
+      Firstname:Firstname,Lastname:Lastname,Uid:Uid,
+      Email:Email
+    });
   };
 
   const transitNotifications = (): void => {
@@ -48,6 +76,7 @@ const Account = () => {
               mode="contained"
               contentStyle={styles.btnContent}
               style={styles.btn}
+              onPress={onLogoutUser}
             >
               Log out
             </Button>

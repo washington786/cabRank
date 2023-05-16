@@ -11,8 +11,9 @@ const MainStack = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="app" component={BottomTabNavigation} />
       <Stack.Screen name="auth" component={SliderScreen} />
+      <Stack.Screen name="app" component={BottomTabNavigation} />
+      
     </Stack.Navigator>
   );
 };
