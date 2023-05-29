@@ -5,6 +5,7 @@ import { Text, Title } from "react-native-paper";
 import { rgba } from "../../../globals/Colors";
 import { roboto } from "../../../globals/Fonts";
 import Scroller from "../../../globals/Scroller";
+import { height } from "../Login/Login";
 
 interface reg {
   onSignInHandler?(): void;
@@ -34,6 +35,8 @@ const styles = StyleSheet.create({
   con: {
     paddingHorizontal: 8,
     paddingVertical: 10,
+    flexGrow: 1,
+    height: height,
   },
   title: {
     textTransform: "capitalize",
