@@ -1,8 +1,9 @@
-import { StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import React from "react";
 import InputWrapperLogin from "../../../components/auth/InputWrapperLogin";
 import Scroller from "../../../globals/Scroller";
 
+export const height = Dimensions.get('screen').height;
 interface login {
   onSignInHandler?(): void;
   onPasswordBtnhandler?(): void;
@@ -29,5 +30,7 @@ const styles = StyleSheet.create({
   con: {
     paddingHorizontal: 8,
     paddingVertical: 10,
+    flexGrow:1,
+    height:height
   },
 });

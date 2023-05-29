@@ -1,23 +1,31 @@
-import { ScrollView, StyleSheet } from 'react-native'
-import React from 'react'
+import { ScrollView, StyleSheet } from "react-native";
+import React from "react";
 
-type s={
-    children:any
-}
-const Scroller = (props:s) => {
+type s = {
+  children: any;
+};
+const Scroller = (props: s) => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.flex}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.flex}
+      style={styles.wrap}
+    >
       {props.children}
     </ScrollView>
-  )
-}
+  );
+};
 
-export default Scroller
+export default Scroller;
 
 const styles = StyleSheet.create({
-    flex:{
-        flexGrow:1,
-        paddingBottom:50,
-        backgroundColor:'white'
-    }
-})
+  flex: {
+    flexGrow: 1,
+    paddingBottom: 50,
+    backgroundColor: "white",
+  },
+  wrap:{
+    flexGrow:1,
+    fontStyle:"blue"
+  }
+});
