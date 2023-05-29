@@ -90,7 +90,7 @@ const InputWrapperLogin = (prop: input) => {
             contentStyle={AuthStyles.btnCon}
             style={AuthStyles.btnCon}
             labelStyle={AuthStyles.lbl}
-            onPress={() => console.log("login clicked!!")}
+            onPress={props.handleSubmit}
             accessible={true}
           >
             Sign In

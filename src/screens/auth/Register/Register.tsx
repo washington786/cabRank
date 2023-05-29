@@ -4,6 +4,7 @@ import InputWrapperRegister from "../../../components/auth/InputWrapperRegister"
 import { Text, Title } from "react-native-paper";
 import { rgba } from "../../../globals/Colors";
 import { roboto } from "../../../globals/Fonts";
+import Scroller from "../../../globals/Scroller";
 
 interface reg {
   onSignInHandler?(): void;
@@ -13,14 +14,16 @@ interface reg {
 const Register = (props: reg) => {
   return (
     <View style={styles.con}>
-      <Title style={styles.title}>create an account</Title>
-      <Text variant="labelSmall" style={styles.p}>
-        enter valid credentials to create an account with us.
-      </Text>
-      <InputWrapperRegister
-        onSignInHandler={props.onSignInHandler}
-        onSignUpHandler={props.onSignUpHandler}
-      />
+      <Scroller>
+        <Title style={styles.title}>create an account</Title>
+        <Text variant="labelSmall" style={styles.p}>
+          enter valid credentials to create an account with us.
+        </Text>
+        <InputWrapperRegister
+          onSignInHandler={props.onSignInHandler}
+          onSignUpHandler={props.onSignUpHandler}
+        />
+      </Scroller>
     </View>
   );
 };

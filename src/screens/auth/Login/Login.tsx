@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import InputWrapperLogin from "../../../components/auth/InputWrapperLogin";
+import Scroller from "../../../globals/Scroller";
 
 interface login {
   onSignInHandler?(): void;
@@ -11,11 +12,13 @@ interface login {
 const Login = (props: login) => {
   return (
     <View style={styles.con}>
-      <InputWrapperLogin
-        onPasswordBtnhandler={props.onPasswordBtnhandler}
-        onPressHandler={props.onSignInHandler}
-        onSignUpHandler={props.onSignUpHandler}
-      />
+      <Scroller>
+        <InputWrapperLogin
+          onPasswordBtnhandler={props.onPasswordBtnhandler}
+          onPressHandler={props.onSignInHandler}
+          onSignUpHandler={props.onSignUpHandler}
+        />
+      </Scroller>
     </View>
   );
 };
