@@ -91,7 +91,7 @@ update(CabRankChild,{Firstname,Email,Lastname,})
         style={styles.input}
         onChangeText={(text)=>setFirstname(text)}           
          value={Firstname}
-      />
+      /> 
       <TextInput
         placeholder={Lastname}
         inputMode="text"

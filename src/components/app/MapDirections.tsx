@@ -4,7 +4,9 @@ import React from "react";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import * as Location from "expo-location";
 import { DUMMY_DATA } from "../../utils/Data";
-
+import MapViewDirections from 'react-native-maps-directions';
+const destination = {latitude: -23.9004, longitude: 29.4464};
+const GOOGLE_MAPS_APIKEY = 'AIzaSyAlHienlg1pz2Y4Xg0y9b12wU_Km-4yvOA';
 type map = {
   lat: number;
   long: number;
@@ -28,12 +30,21 @@ const MapDirections = (props: map) => {
           longitudeDelta: 0.029,
         }}
       >
+
         <Marker
           coordinate={{
             latitude: props.lat,
             longitude: props.long,
           }}
         />
+         <MapViewDirections
+                    origin={{latitude: props.lat,
+                      longitude: props.long,}}
+                    destination={destination}
+                    apikey={GOOGLE_MAPS_APIKEY}
+                    strokeWidth={4}
+                    strokeColor='#000'
+                  />
         <Polyline coordinates={coords} strokeColor="#f00" strokeWidth={2} />
       </MapView>
     </View>

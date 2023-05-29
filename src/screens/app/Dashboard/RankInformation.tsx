@@ -11,12 +11,13 @@ import { rgba } from "../../../globals/Colors";
 import { roboto } from "../../../globals/Fonts";
 import MapDirections from "../../../components/app/MapDirections";
 import Scroller from "../../../globals/Scroller";
-
+import MapViewDirections from 'react-native-maps-directions';
 const RankInformation = () => {
   const route = useRoute();
   const { place,lat,long } = route.params;
   const { rankName, city, province, description, images, operations,coords } = place;
   const {latitude,longitude} = coords;
+  const origin = {latitude: -23.9045, longitude: 29.4689};
   
   return (
     <MainView>
@@ -32,6 +33,7 @@ const RankInformation = () => {
         />
 
         <MapDirections lat={lat} long={long} d_lat={latitude} d_long={longitude}/>
+     
       </Scroller>
     </MainView>
   );
