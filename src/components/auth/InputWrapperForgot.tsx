@@ -27,6 +27,7 @@ const InputWrapperForgot = (props:input) => {
         style={[AuthStyles.btnCon,styles.mgn]}
         labelStyle={AuthStyles.lbl}
         onPress={props.onSubmitHandler}
+        accessible={true}
       >
         Submit
       </Button>
@@ -36,6 +37,7 @@ const InputWrapperForgot = (props:input) => {
         style={AuthStyles.outBtn}
         labelStyle={AuthStyles.lb}
         onPress={props.onSignInHandler}
+        accessible={true}
       >
         go back
       </Button>

@@ -14,7 +14,7 @@ interface input {
   onSignUpHandler?(): void;
 }
 
-const InputWrapperRegister = (props: input) => {
+const InputWrapperRegister = (prop: input) => {
   const navigation = useNavigation();
   const ReviewSchem=yup.object({
     Firstname:yup.string().required().min(3),
@@ -118,6 +118,7 @@ email.trim().toLowerCase(),password).then(res =>{
         style={AuthStyles.btnCon}
         labelStyle={AuthStyles.lbl}
         onPress={props.handleSubmit}
+        accessible={true}
       >
         Sign Up
       </Button>
@@ -126,7 +127,8 @@ email.trim().toLowerCase(),password).then(res =>{
         mode="outlined"
         style={AuthStyles.outBtn}
         labelStyle={AuthStyles.lb}
-        onPress={props.onSignInHandler}
+        onPress={prop.onSignInHandler}
+        accessible={true}
       >
         Sign In
       </Button>
