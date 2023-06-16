@@ -8,6 +8,8 @@ import HeaderBack from "../../../components/app/HeaderBack";
  import { firestore } from "../../auth/firebase";
  import { collection,addDoc,orderBy,query,onSnapshot } from "firebase/firestore";
 import { createdAt } from "expo-updates";
+// https://chatkitty.com/blog/building-a-chat-app-with-react-native-and-gifted-chat-part-4
+//https://www.cometchat.com/tutorials/build-a-chat-app-with-react-native-gifted-chat
 const ChatScreen = () => {
   const [messages, setMessages] = useState<Array<Object>>([]);
   const [Firstname,setFirstname]=useState('')
@@ -67,10 +69,12 @@ const ChatScreen = () => {
         onSend={(messages) => onSend(messages)}
         user={{
           _id: auth.currentUser?.email,
-         avatar:'https://i.pravatar.cc/300'
-      
+         avatar:'https://i.pravatar.cc/300',
+         name:Firstname,
          
         }}
+        renderUsernameOnMessage={true}
+        // renderBubble={renderBubble}
         // isTyping={false}
         // showUserAvatar={true}
       />
