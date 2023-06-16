@@ -11,7 +11,7 @@ const HomeStack = () => {
   return (
     <DashStack.Navigator screenOptions={{
         headerShown:false
-    }} initialRouteName='dashboard'>
+    }} initialRouteName='chat'>
         <DashStack.Screen name='dashboard' component={Dashboard}/>
         <DashStack.Screen name='marshal' component={Marshal}/>
         <DashStack.Screen name='chat' component={ChatScreen}/>

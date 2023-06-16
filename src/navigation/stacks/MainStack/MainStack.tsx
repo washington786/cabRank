@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import SliderScreen from "../../../screens/auth/SliderPage/SliderScreen";
 import BottomTabNavigation from "../../bottomNavigation/BottomTabNavigation";
-
+// initialRouteName='app'
 const Stack = createStackNavigator();
 
 const MainStack = () => {
@@ -11,6 +11,7 @@ const MainStack = () => {
         headerShown: false,
       }}
     >
+      
       <Stack.Screen name="auth" component={SliderScreen} />
       <Stack.Screen name="app" component={BottomTabNavigation} />
       
